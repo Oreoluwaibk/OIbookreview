@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: #f3eee4;
+  --color-paper-raised: #fffaf3;
+  --color-ink: #1c2836;
+  --color-ink-soft: #5c6a78;
+  --color-line: #e4d6c6;
+  --color-lake: #2f6f9f;
+  --color-lake-deep: #1d4f74;
+  --color-lake-soft: #e5f1f8;
+  --color-clay: #c56a45;
+  --font-sans: var(--font-nunito), "Nunito", sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-wrap: break-word;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+  font-size: 1rem;
+}
+
+::selection {
+  background: #c5dff0;
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-lake);
+  outline-offset: 2px;
 }

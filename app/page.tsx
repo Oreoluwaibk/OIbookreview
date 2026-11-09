@@ -1,69 +1,84 @@
-import Image from "next/image";
+import Link from "next/link";
+import { SearchForm } from "@/components/search-form";
 
-export default function Home() {
+const starters = [
+  "The Left Hand of Darkness",
+  "Pachinko",
+  "The Warmth of Other Suns",
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:gap-12 sm:px-6 sm:py-14">
+      <section className="max-w-2xl">
+        <p className="text-sm font-semibold tracking-wide text-clay">A warm shelf</p>
+        <h1 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
+          A place to remember what you read.
+        </h1>
+        <p className="mt-4 text-lg leading-8 text-ink-soft">
+          Search the catalog and read a preview before you commit to the book.
+          Keep each reading with its edition and how far you got. A review you publish
+          is public: the next reader who searches that book sees the lesson, and what you are going to do with it.
+        </p>
+        <div className="mt-8">
+          <SearchForm />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <p className="mt-4 text-sm text-ink-soft">
+          Try{" "}
+          {starters.map((title, index) => (
+            <span key={title}>
+              {index > 0 ? (index === starters.length - 1 ? ", or " : ", ") : null}
+              <Link
+                href={`/search?q=${encodeURIComponent(title)}`}
+                className="font-semibold text-lake-deep"
+              >
+                {title}
+              </Link>
+            </span>
+          ))}
+          .
+        </p>
+        <p className="mt-3 text-sm text-ink-soft">
+          For Scripture, open a{" "}
+          <Link href="/study" className="font-semibold text-lake-deep">
+            study
+          </Link>
+          . You can keep a study private, or share it with anyone studying the same theme and subject.
+        </p>
+      </section>
+
+      <section className="rounded-3xl border border-line bg-paper-raised p-5 sm:p-8">
+        <h2 className="font-serif text-2xl">How the shelf works</h2>
+        <ol className="mt-6 grid gap-5">
+          <li className="grid grid-cols-[auto_1fr] gap-4">
+            <span className="font-serif text-lake">01</span>
+            <p>
+              <span className="font-semibold">Find the book.</span>{" "}
+              <span className="text-ink-soft">
+                Search by title, author, or ISBN. The page names the edition when the catalog has it.
+              </span>
+            </p>
+          </li>
+          <li className="grid grid-cols-[auto_1fr] gap-4">
+            <span className="font-serif text-lake">02</span>
+            <p>
+              <span className="font-semibold">Keep your place.</span>{" "}
+              <span className="text-ink-soft">
+                Want to read, reading, finished, or stopped. Format, progress, and whether the copy was bought, borrowed, or an advance.
+              </span>
+            </p>
+          </li>
+          <li className="grid grid-cols-[auto_1fr] gap-4">
+            <span className="font-serif text-lake">03</span>
+            <p>
+              <span className="font-semibold">Remember it, then share it.</span>{" "}
+              <span className="text-ink-soft">
+                A public review stays with the book, so the next person who searches for it can use what you found.
+              </span>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </main>
   );
 }
