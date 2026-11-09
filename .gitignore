@@ -20,12 +20,7 @@
 # production
 /build
 
-/supabase
-/supabase/migrations
-/supabase/migrate-reviews.sql
-/supabase/migrate-study-chapters.sql
-/supabase/migrate-users.sql
-
+/supabase/
 # misc
 .DS_Store
 *.pem
