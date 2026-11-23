@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Nunito } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
@@ -24,9 +25,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${fraunces.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
+      <body className="flex min-h-full flex-col">
         <SiteHeader />
-        {children}
+        <div className="flex-1">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );

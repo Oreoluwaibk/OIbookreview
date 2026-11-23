@@ -1,0 +1,18 @@
+{
+  "name": "Book Review",
+  "short_name": "Book Review",
+  "description": "Find a book, keep your place, study, and see how you are growing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3eee4",
+  "theme_color": "#1d4f74",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
