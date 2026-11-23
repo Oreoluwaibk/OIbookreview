@@ -37,6 +37,9 @@ export async function LegalDocumentView({ slug }: { slug: LegalSlug }) {
         <Link href="/terms" className="text-lake-deep">
           Terms of use
         </Link>
+        <Link href="/delete" className="text-lake-deep">
+          Delete account
+        </Link>
       </p>
     </main>
   );

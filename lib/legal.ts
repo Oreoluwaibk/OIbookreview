@@ -4,7 +4,7 @@ import { connection } from "next/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
 
-export const legalSlugs = ["privacy", "terms"] as const;
+export const legalSlugs = ["privacy", "terms", "delete"] as const;
 
 export type LegalSlug = (typeof legalSlugs)[number];
 
@@ -24,10 +24,14 @@ const fallbackCopy: Record<LegalSlug, { title: string; body: string }> = {
     title: "Terms of use",
     body: "The terms of use have not been written yet.",
   },
+  delete: {
+    title: "Delete account",
+    body: "The deletion notice has not been written yet.",
+  },
 };
 
 export function isLegalSlug(value: string): value is LegalSlug {
-  return value === "privacy" || value === "terms";
+  return (legalSlugs as readonly string[]).includes(value);
 }
 
 async function readJsonFile(filePath: string) {

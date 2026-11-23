@@ -10,6 +10,9 @@ export function SiteFooter() {
         <Link href="/terms" className="font-semibold text-lake-deep">
           Terms of use
         </Link>
+        <Link href="/delete" className="font-semibold text-lake-deep">
+          Delete account
+        </Link>
       </div>
     </footer>
   );
