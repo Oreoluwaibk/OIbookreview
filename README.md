@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Book Review
 
-## Getting Started
+A shelf for what you read. Search the Open Library catalog, keep a reading (want, reading, finished, or stopped), write a review, and keep a study. Accounts, the library, and published reviews are stored in Supabase.
 
-First, run the development server:
+The admin desk that can take a review or a study down is [bookreview-admin](https://github.com/Oreoluwaibk/bookreview-admin).
+
+## Stack
+
+Next.js (App Router), React, TypeScript, Tailwind CSS, and Supabase (`@supabase/ssr` and `@supabase/supabase-js`).
+
+## Pages
+
+| Path | What it is |
+| --- | --- |
+| `/` | Home |
+| `/search` | Catalog search |
+| `/books/[workId]` | One book |
+| `/library` | Your readings |
+| `/study` | Studies |
+| `/login`, `/signup` | Account |
+| `/privacy`, `/terms`, `/delete` | Legal pages and account deletion |
+
+Server actions in `app/actions` cover auth, profile, readings, reviews, and studies. `app/api/verse` looks up a verse for a study.
+
+## Run locally
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fill in the Supabase values in `.env.local`. Do not commit real keys.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000).
